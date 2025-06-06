@@ -21,9 +21,9 @@ export default function PMRequestHeader({ onRefresh }: PMRequestHeaderProps) {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           {/* Header Content */}
           <div className="flex-1 min-w-0">
-            <h1 className="text-lg font-semibold text-gray-900 mb-1">PM Request Contract</h1>
+            <h1 className="text-lg font-semibold text-gray-900 mb-1">Product Groupings</h1>
             <p className="text-sm text-gray-600 break-words whitespace-normal">
-              Manage contract products for deal records
+              Manage products for the creationg of deal projects
             </p>
           </div>
           
