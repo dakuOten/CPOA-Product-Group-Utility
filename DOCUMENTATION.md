@@ -268,7 +268,7 @@ const apiData = {
   id: dealId,
   Subform_1: [
     {
-      Product_Type2: "string",
+      Product_Type: "string",
       Is_Contract: boolean,
       Product_Grouping: "string",
       Quantity: number,

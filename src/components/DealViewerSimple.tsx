@@ -223,7 +223,7 @@ const ProductsTable = ({ dealData }: { readonly dealData: Record<string, unknown
                 </TableCell>
                 <TableCell>
                   <Badge variant="outline">
-                    {getString(product, 'Product_Type2')}
+                    {getString(product, 'Product_Type')}
                   </Badge>
                 </TableCell>
                 <TableCell>{getNumber(product, 'Quantity')}</TableCell>

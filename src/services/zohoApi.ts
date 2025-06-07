@@ -1,4 +1,16 @@
-// Zoho CRM API service for Product Management
+// Zoh//   "Subform_1": [
+//     {
+//       "Product_Type": "AT&T Transactional",
+//       "Is_Contract": true,
+//       "Product_Grouping": "A",
+//       "Quantity": 2,
+//       "Terms": "Co-Terminus", 
+//       "Pricing": 500,
+//       "Total_Pricing": "1,000.00",
+//       "Vendor": null,
+//       "Products": "6637555000000864095"
+//       // NOTE: No "id" field - Zoho manages subform record IDs automatically
+//     }vice for Product Management
 // Handles updating product arrays in Subform_1 using Zoho CRM API v3
 // 
 // IMPORTANT: API Structure must be flat with Subform_1 at root level:
@@ -6,7 +18,7 @@
 //   "id": "6637555000000860679",
 //   "Subform_1": [
 //     {
-//       "Product_Type2": "AT&T Transactional",
+//       "Product_Type": "AT&T Transactional",
 //       "Is_Contract": true,
 //       "Product_Grouping": "A",
 //       "Quantity": 2,
@@ -48,7 +60,7 @@ interface ZohoUpdateResponse {
  * NOTE: id field is excluded as Zoho manages subform record IDs automatically
  */
 interface ZohoProductRecord {
-  Product_Type2: string;
+  Product_Type: string;
   Is_Contract: boolean;
   Product_Grouping: string | null;
   Quantity: number;
@@ -67,7 +79,7 @@ interface ZohoProductRecord {
  *   "id": "6637555000000860679",
  *   "Subform_1": [
  *     {
- *       "Product_Type2": "AT&T Transactional",
+ *       "Product_Type": "AT&T Transactional",
  *       "Is_Contract": true,
  *       "Product_Grouping": "A",
  *       "Quantity": 2,
@@ -119,9 +131,8 @@ export async function updateProductSubformArray(
         id: product.id,
         grouping: product.productGrouping,
         isContract: product.isContract
-      });
-        return {
-        Product_Type2: product.type,
+      });        return {
+        Product_Type: product.type,
         Is_Contract: product.isContract ?? false,
         Product_Grouping: product.productGrouping || null,
         Quantity: product.quantity || 1,
@@ -148,7 +159,7 @@ export async function updateProductSubformArray(
     console.log('✅ No product IDs included (Zoho manages them automatically)');    console.log('🔄 Looping through all products to confirm structure...');
     apiData.Subform_1.forEach((product, index) => {
       console.log(`📋 Product ${index + 1} structure:`, {
-        'Product_Type2': product.Product_Type2,
+        'Product_Type': product.Product_Type,
         'Is_Contract': product.Is_Contract,
         'Product_Grouping': product.Product_Grouping,
         'Quantity': product.Quantity,

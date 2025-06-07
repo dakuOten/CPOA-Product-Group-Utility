@@ -62,12 +62,10 @@ export function useProductManagement() {
           productName = (productRecord.Product_Name as string) || 
                        (productRecord.name as string) || 
                        `Product ${index + 1}`; // Fallback name
-        }
-
-        console.log(`📋 Processing product ${index + 1}:`, {
+        }        console.log(`📋 Processing product ${index + 1}:`, {
           id: productId,
           name: productName,
-          type: productRecord.Product_Type2,
+          type: productRecord.Product_Type,
           grouping: productRecord.Product_Grouping,
           isContract: productRecord.Is_Contract
         });
@@ -75,7 +73,7 @@ export function useProductManagement() {
         return {
           id: productId,
           name: productName,
-          type: (productRecord.Product_Type2 as string) || '',
+          type: (productRecord.Product_Type as string) || '',
           quantity: (productRecord.Quantity as number) || 0,
           terms: (productRecord.Terms as string) || '',
           unitPrice: (productRecord.Pricing as number) || 0,
@@ -167,7 +165,7 @@ export function useProductManagement() {
     console.log('🔄 Ensuring ALL products in Subform_1 are included...');    // Log each product to verify the complete loop
     editableProducts.forEach((product, index) => {
       console.log(`📋 Product ${index + 1}/${editableProducts.length} will be sent as:`, {
-        'Product_Type2': product.type,
+        'Product_Type': product.type,
         'Is_Contract': product.isContract,
         'Product_Grouping': product.productGrouping,
         'Quantity': product.quantity,

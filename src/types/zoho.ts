@@ -21,7 +21,7 @@ const ZohoProductSchema = z.object({
 const ZohoProductSubformSchema = z.object({
   // Core product identification
   Products: ZohoProductSchema.optional(),
-  Product_Type2: z.string().optional(),
+  Product_Type: z.string().optional(),
   
   // Contract specific fields
   Is_Contract: z.boolean().optional().default(false),

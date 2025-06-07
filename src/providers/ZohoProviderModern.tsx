@@ -303,7 +303,7 @@ export const ZohoProvider = ({ children }: ZohoProviderProps) => {
                     Subform_1: [
                       {
                         Products: { name: 'Mock Product 1', id: 'mock-product-1' },
-                        Product_Type2: 'Software',
+                        Product_Type: 'Software',
                         Is_Contract: true,
                         Product_Grouping: null,
                         Quantity: 1,
