@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Save } from 'lucide-react';
 
 interface Product {
@@ -76,31 +77,61 @@ export default function PMRequestForm({
                       title="Enter product grouping (A-Z)"
                     />
                   </div>
-                  
-                  {/* Product Name */}                  <div className="col-span-2">
-                    <span className="font-medium text-gray-800 truncate block" title={product.name}>
-                      {product.name}
-                    </span>
+                    {/* Product Name with Tags */}
+                  <div className="col-span-2">
+                    <div className="space-y-1">
+                      <span className="font-medium text-gray-800 truncate block" title={product.name}>
+                        {product.name}
+                      </span>
+                      <div className="flex gap-1 flex-wrap">
+                        {product.isContract && (
+                          <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 text-[10px] px-1 py-0">
+                            Contract
+                          </Badge>
+                        )}
+                        {!product.isContract && (
+                          <Badge variant="outline" className="bg-gray-50 text-gray-600 border-gray-300 text-[10px] px-1 py-0">
+                            Product
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   
-                  {/* Type */}
-                  <div className="truncate" title={product.type}>{product.type}</div>
+                  {/* Type with Badge */}
+                  <div>
+                    <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 text-[10px] px-1 py-0" title={product.type}>
+                      {product.type.length > 10 ? `${product.type.substring(0, 10)}...` : product.type}
+                    </Badge>
+                  </div>
                   
                   {/* Quantity */}
                   <div className="text-center">{product.quantity}</div>
-                  
-                  {/* Terms */}
-                  <div className="truncate" title={product.terms}>{product.terms}</div>
+                    {/* Terms with Badge */}
+                  <div>
+                    {product.terms ? (
+                      <Badge variant="outline" className="bg-orange-50 text-orange-700 border-orange-200 text-[10px] px-1 py-0" title={product.terms}>
+                        {product.terms}
+                      </Badge>
+                    ) : (
+                      <span className="text-xs text-gray-400">N/A</span>
+                    )}
+                  </div>
                   
                   {/* Unit Price */}
                   <div className="text-right">${product.unitPrice?.toLocaleString() || '0.00'}</div>
                   
                   {/* Total */}
                   <div className="text-right font-medium">${product.totalPricing}</div>
-                  
-                  {/* Vendor */}
-                  <div className="text-xs text-gray-600 truncate" title={product.vendor || 'N/A'}>
-                    {product.vendor || 'N/A'}
+                    {/* Vendor with Badge */}
+                  <div>
+                    {product.vendor ? (
+                      <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 text-[10px] px-1 py-0" title={product.vendor}>
+                        {product.vendor.length > 8 ? `${product.vendor.substring(0, 8)}...` : product.vendor}
+                      </Badge>
+                    ) : (
+                      <span className="text-xs text-gray-400">N/A</span>
+                    )}
                   </div>
                 </div>
 
